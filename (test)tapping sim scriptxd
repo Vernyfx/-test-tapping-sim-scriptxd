@@ -1,26 +1,47 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("testing! tapping sim fucker", "DarkTheme")
-
+local remotePath = game:GetService("ReplicatedStorage").Events;
 if game.PlaceId ==9498006165 then
     --Main
     local Main = Window:NewTab("Main")
     local MainSection = Main:NewSection("Main")
 
     MainSection:NewToggle("AutoTap", "Automatically taps for u", function(a)
-
-
         _G.autoTap = a;
-
-
-    local remotePath = game:GetService("ReplicatedStorage").Events;
-
-
-    spawn(function()
-    while _G.autoTap do
-        remotePath.Tap:FireServer()
-
-        wait()
-    end
+        while _G.autoTap do
+            remotePath.Tap:FireServer()
+            wait()
+        end
     end)
+    MainSection:NewToggle("Rebirth (choose below)", "Auto reb", function(b)
+        _G.autoReb = b;
+    end)
+    MainSection:NewToggle("1", "1 reb", function(c)
+        _G.reb1 = c;
+        while _G.reb1 do
+            remotePath.Rebirth:FireServer(1)
+            wait()
+        end
+    end)
+    MainSection:NewToggle("5", "5 reb", function(d)
+        _G.reb5 = d;
+        while _G.reb5 do
+            remotePath.Rebirth:FireServer(5)
+            wait()
+        end
+    end)
+    MainSection:NewToggle("10", "10 reb", function(e)
+        _G.reb10 = e;
+        while _G.reb10 do
+            remotePath.Rebirth:FireServer(10)
+            wait()
+        end
+    end)
+    MainSection:NewToggle("20", "20 reb", function(f)
+        _G.reb20 = f;
+        while _G.reb20 do
+            remotePath.Rebirth:FireServer(20)
+            wait()
+        end
     end)
 end 
