@@ -6,17 +6,17 @@ if game.PlaceId ==9498006165 then
     local Main = Window:NewTab("Main")
     local MainSection = Main:NewSection("Main")
 
-    MainSection:NewButton("AutoTap", "Automatically taps for u", function()
+    MainSection:NewToggle("AutoTap", "Automatically taps for u", function(a)
 
 
-        _G.autoTap = true;
+        _G.autoTap = a;
 
 
     local remotePath = game:GetService("ReplicatedStorage").Events;
 
 
     spawn(function()
-    while _G.autoTap == true do
+    while _G.autoTap do
         remotePath.Tap:FireServer()
 
         wait()
