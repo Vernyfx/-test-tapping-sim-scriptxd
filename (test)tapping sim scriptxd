@@ -45,30 +45,27 @@ end)
     end
 end)
 --auto rebirth
-MainSection:NewToggle("AutoRebirth 5x", "rebirth", function(state)
-    if state then
-        _G.autoRebirth = true;
-while _G.autoRebirth == true do
-local args = {
-    [1] = 5
-}
-game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(unpack(args))
-wait()
 
-end
-    else
-        _G.autoRebirth = false;
-while _G.autoRebirth == true do
-local args = {
-    [1] = 5
-}
-game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(unpack(args))
-wait()
-
-end
-    end
+MainSection:NewToggle("Autorebirth", "Automatically Rebirths the amount you selected", function(state)
+        _G.Autorebirth = state
 end)
 
+
+MainSection:NewDropdown("AutoRebirth", "DropdownInf", {"1", "5", "10", "20", "100", "500", "2000", "4000", "8000",}, function(currentOption)
+    _G.open = currentOption
+    print(_G.open)
+end)
+
+
+task.spawn(function() -- spawns a function, makes it so it doesnt stop the script past this function
+    while task.wait() do -- loop
+        if _G.Autorebirth then -- This is like saying if _G.Autorebirth == true
+            if _G.open ~= nil then -- Checks if a rebirth value from the dropdown is selected
+                game:GetService("ReplicatedStorage").Events.Rebirth:FireServer(tonumber(_G.open)) -- rebirths with the select value from the dropdown
+            end
+        end
+    end
+end)
 
 --auto egg
 
@@ -100,3 +97,4 @@ end
 end 
     end
 end)
+
