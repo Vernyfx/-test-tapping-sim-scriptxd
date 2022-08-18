@@ -1,0 +1,26 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("testing! tapping sim fucker", "DarkTheme")
+
+if game.PlaceId ==9498006165 then
+    --Main
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+
+    MainSection:NewButton("AutoTap", "Automatically taps for u", function()
+
+
+        _G.autoTap = true;
+
+
+    local remotePath = game:GetService("ReplicatedStorage").Events;
+
+
+    spawn(function()
+    while _G.autoTap == true do
+        remotePath.Tap:FireServer()
+
+        wait()
+    end
+    end)
+    end)
+end 
