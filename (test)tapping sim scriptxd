@@ -51,7 +51,7 @@ MainSection:NewToggle("Autorebirth", "Automatically Rebirths the amount you sele
 end)
 
 
-MainSection:NewDropdown("AutoRebirth", "DropdownInf", {"1", "5", "10", "20", "100", "500", "2000", "4000", "8000", "12500",}, function(currentOption)
+MainSection:NewDropdown("AutoRebirth", "DropdownInf", {"1", "5", "10", "20", "100", "500", "2000", "4000", "8000", "12500", 18000,}, function(currentOption)
     _G.open = currentOption
     print(_G.open)
 end)
@@ -225,5 +225,93 @@ MainSection:NewButton("Reset WS/JS", "Resets them to default", function()
     game.Players.LocalPlayer.Character.Humanoid.Jumppower = 50
 end)
 
+
+--Machines/Guis
+
+local Main = Window:NewTab("Machines")
+local MainSection = Main:NewSection("machines read the text below this btw")
+
+
+MainSection:NewLabel("Sometimes it bugges and tps u into the ground when it happens just stay there till ur done and use the world tp to get out")
+
+
+
+MainSection:NewButton("Tp to Rainbow Machine", "teleports to rainbow mahcine", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("Workspace").Proximity.RainbowMachine.CFrame)
+end)
+
+
+MainSection:NewButton("Tp to RobuxStore", "teleports u to the robux store", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("Workspace").Proximity.Store.CFrame)
+end)
+
+
+
+MainSection:NewButton("Tp to ShinyMachine", "teleports u to the shiny machine", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("Workspace").Proximity.ShinyMachine.CFrame)
+end)
+
+
+
+MainSection:NewButton("Tp to Pet Index", "teleports u to the pet index", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("Workspace").Proximity.PetIndex.CFrame)
+end)
+
+
+MainSection:NewButton("Tp to Enchantement", "teleports u to the enchantement", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("Workspace").Proximity.Enchantment.CFrame)
+end)
+
+
+MainSection:NewButton("Tp to MountDealer", "teleports u to the mountdealer", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("Workspace").Proximity.MountDealer.CFrame)
+end)
+
+
+MainSection:NewButton("Tp to Upgrades", "teleports u to upgrades", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Character.HumanoidRootPart.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("Workspace").Proximity.Upgrades.CFrame)
+end)
 
 
