@@ -69,8 +69,6 @@ end)
 
 --auto egg
 
-
-
 local Main = Window:NewTab("AutoEgg")
 
 
@@ -79,7 +77,14 @@ local MainSection = Main:NewSection("Auto Eggs")
 
 
 MainSection:NewToggle("AutoOpen", "Automatically opens eggs", function(state)
-    _G.egg = state
+    _G.eggtoggle = state
+    task.spawn(function()
+        while task.wait() do
+            if _G.egg ~= nil and _G.eggtoggle then
+                 game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer({},tostring(_G.egg),1)
+            end
+         end
+    end)
 end)
 
 
@@ -88,21 +93,6 @@ MainSection:NewDropdown("Eggs", "starts from forestisland", {"Forest Egg", "Flow
     _G.egg = currentOption
     print(_G.egg)
 end)
-
-task.spawn(function()
-    while task.wait() do
-    if _G.egg then
-        if _G.egg ~= nil then
-             game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer({},tostring(_G.egg),1)
-        end
-     end
-   end
-end)
-
-
-
-
-
 
 
 --World TP
@@ -312,6 +302,35 @@ MainSection:NewButton("Tp to Upgrades", "teleports u to upgrades", function()
           end
         end
     teleportTO(game:GetService("Workspace").Proximity.Upgrades.CFrame)
+end)
+
+local Main = Window:NewTab("Boosts")
+local MainSection = Main:NewSection("Click to use boost")
+
+MainSection:NewButton("tripleCoins", "uses tripleCoins potion", function()
+    local args = {
+        [1] = "tripleTaps"
+    }
+    
+    game:GetService("ReplicatedStorage").Events.UseBoost:FireServer(unpack(args))
+end)
+
+
+MainSection:NewButton("doubleLuck", "uses doubleLuck potion", function()
+    local args = {
+        [1] = "doubleLuck"
+    }
+    
+    game:GetService("ReplicatedStorage").Events.UseBoost:FireServer(unpack(args))
+end)
+
+
+MainSection:NewButton("tripleLuck", "uses ur tripleLuck potion", function()
+    local args = {
+        [1] = "tripleLuck"
+    }
+    
+    game:GetService("ReplicatedStorage").Events.UseBoost:FireServer(unpack(args))
 end)
 
 
