@@ -51,7 +51,7 @@ MainSection:NewToggle("Autorebirth", "Automatically Rebirths the amount you sele
 end)
 
 
-MainSection:NewDropdown("AutoRebirth", "DropdownInf", {"1", "5", "10", "20", "100", "500", "2000", "4000", "8000",}, function(currentOption)
+MainSection:NewDropdown("AutoRebirth", "DropdownInf", {"1", "5", "10", "20", "100", "500", "2000", "4000", "8000", "12500",}, function(currentOption)
     _G.open = currentOption
     print(_G.open)
 end)
@@ -70,16 +70,40 @@ end)
 --auto egg
 
 
+
 local Main = Window:NewTab("AutoEgg")
 
 
 local MainSection = Main:NewSection("Auto Eggs")
 
 
-MainSection:NewDropdown("Eggs", "starts from forestisland", {"Forest", "Flower", "Swamp", "Snow", "Desert", "Death", "Beach", "Mines", "Cloud", "Coral", "Darkheart",}, function(currentOption)
-    _G.open = currentOption
-    print(_G.open)
+
+MainSection:NewToggle("AutoOpen", "Automatically opens eggs", function(state)
+    _G.egg = state
 end)
+
+
+
+MainSection:NewDropdown("Eggs", "starts from forestisland", {"Forest Egg", "Flower Egg", "Swamp Egg", "Snow Egg", "Desert Egg", "Death Egg", "Beach Egg", "Mines Egg", "Cloud Egg", "Coral Egg", "Darkheart Egg",}, function(currentOption)
+    _G.egg = currentOption
+    print(_G.egg)
+end)
+
+task.spawn(function()
+    while task.wait() do
+    if _G.egg then
+        if _G.egg ~= nil then
+             game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer({},tostring(_G.egg),1)
+        end
+     end
+   end
+end)
+
+
+
+
+
+
 
 --World TP
 
@@ -200,3 +224,6 @@ MainSection:NewButton("Reset WS/JS", "Resets them to default", function()
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
     game.Players.LocalPlayer.Character.Humanoid.Jumppower = 50
 end)
+
+
+
