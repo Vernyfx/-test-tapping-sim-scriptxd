@@ -71,30 +71,132 @@ end)
 
 
 local Main = Window:NewTab("AutoEgg")
+
+
 local MainSection = Main:NewSection("Auto Eggs")
-MainSection:NewToggle("Auto Wood Egg", "Automatically buys Wood Egg", function(state)
-    if state then
-        _G.AutoEgg = true;
- while _G.AutoEgg ==true do 
-    local args = {
-        [1] = {},
-        [2] = "Wood Egg",
-        [3] = 1
-    }
-    
-    game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
-end 
-    else
-        _G.AutoEgg = false;
- while _G.AutoEgg ==true do 
-    local args = {
-        [1] = {},
-        [2] = "Wood Egg",
-        [3] = 1
-    }
-    
-    game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
-end 
-    end
+
+
+MainSection:NewDropdown("Eggs", "starts from forestisland", {"Forest", "Flower", "Swamp", "Snow", "Desert", "Death", "Beach", "Mines", "Cloud", "Coral", "Darkheart",}, function(currentOption)
+    _G.open = currentOption
+    print(_G.open)
 end)
 
+--World TP
+
+local Main = Window:NewTab("Worlds")
+local MainSection = Main:NewSection("Select World")
+
+
+MainSection:NewButton("Forest", "Teleports you to the forest", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-163.984467, 987.596497, -403.339417, 1, 0, 0, 0, 1, 0, 0, 0, 1)))
+end)
+
+MainSection:NewButton("Flower", "Automatically teleports u to the Flower zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-179.51564, 1524.63098, -682.498718, -1, 0, -0, -0, 1, -0, -0, 0, -1)))
+end)
+
+
+MainSection:NewButton("Swamp", "teleports u to the swamp zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-264.358887, 2123.06299, -694.661316, -1, 0, -0, -0, 1, -0, -0, 0, -1)))
+end)
+
+MainSection:NewButton("Snow", "teleports u to the snow zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-201.771973, 2944.48169, -470.408752, 0, 0, 1, 0, 1, 0, -1, 0, 0)))
+end)
+
+
+MainSection:NewButton("Desert", "teleports u to the desert zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-166.285156, 4235.38916, -779.153137, 0, 0, 1, 0, 1, 0, -1, 0, 0)))
+end)
+
+MainSection:NewButton("Death", "teleports u ti the death zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-276.201263, 5425.62158, -480.287781, 0, 0, 1, 0, 1, 0, -1, 0, 0)))
+end)
+
+MainSection:NewButton("Beach", "teleports u to the beach zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-140.345093, 6881.63086, -495.682129, 0, 0, 1, 0, 1, 0, -1, 0, 0)))
+end)
+
+
+MainSection:NewButton("Mine", "teleports u to the mine zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-243.258667, 8376.5166, -483.889771, 0, 0, 1, 0, 1, 0, -1, 0, 0)))
+end)
+
+MainSection:NewButton("Cloud", "teleports u to the cloud zone", function()
+    function teleportTO(placeCFrame)
+        local plyr = game.Players.LocalPlayer;
+        if plyr.Character then
+            plyr.Chracter.HumanoidRootPar.CFrame = placeCFrame;
+          end
+        end
+    teleportTO(game:GetService("ReplicatedStorage").Events.Teleport:FireServer(CFrame.new(-253.303482, 11262.8818, -237.888596, 0, 0, 1, 0, 1, 0, -1, 0, 0)))
+    
+end)
+
+MainSection:NewLabel("More Zones coming out soon!")
+
+
+--Misc
+local Main = Window:NewTab("Misc")
+local MainSection = Main:NewSection("Misc")
+
+MainSection:NewSlider("Walkspeed", "Changes ur speed", 500, 30, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+MainSection:NewSlider("Jumppower", "Changes ur Jumppower", 350, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.Jumppower = s
+end)
+
+MainSection:NewButton("Reset WS/JS", "Resets them to default", function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 30
+    game.Players.LocalPlayer.Character.Humanoid.Jumppower = 50
+end)
