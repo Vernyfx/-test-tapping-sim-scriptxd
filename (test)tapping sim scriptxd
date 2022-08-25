@@ -333,4 +333,78 @@ MainSection:NewButton("tripleLuck", "uses ur tripleLuck potion", function()
     game:GetService("ReplicatedStorage").Events.UseBoost:FireServer(unpack(args))
 end)
 
+-- event stuff
 
+local Main = Window:NewTab("EVENT!!!")
+
+local MainSection = Main:NewSection("this is for event eggs and stuff")
+
+
+MainSection:NewToggle("Eventegg1x", "hatched event egg 1x", function(state)
+    if state then
+        _G.autoeventegg = true;
+
+task.spawn(function ()
+    while _G.autoeventegg == true do
+local args = {
+    [1] = {},
+    [2] = "35M Egg",
+    [3] = 1
+}
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
+wait()
+    end
+end)
+
+    else
+        _G.autoeventegg = false;
+
+task.spawn(function ()
+    while _G.autoeventegg == true do
+local args = {
+    [1] = {},
+    [2] = "35M Egg",
+    [3] = 1
+}
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
+wait()
+    end
+end)
+
+    end
+end)
+
+
+MainSection:NewToggle("EventEgg3x", "yep", function(state)
+    if state then
+        _G.autoeventegg = true;
+
+task.spawn(function ()
+    while _G.autoeventegg == true do
+local args = {
+    [1] = {},
+    [2] = "35M Egg",
+    [3] = 3
+}
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
+wait()
+    end
+end)
+
+    else
+        _G.autoeventegg = false;
+
+task.spawn(function ()
+    while _G.autoeventegg == true do
+local args = {
+    [1] = {},
+    [2] = "35M Egg",
+    [3] = 3
+}
+game:GetService("ReplicatedStorage").Events.HatchEgg:InvokeServer(unpack(args))
+wait()
+    end
+end)
+
+    end
+end)
